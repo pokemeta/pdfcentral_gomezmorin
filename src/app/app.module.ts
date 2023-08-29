@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SidebarpdfcentralComponent } from './sidebarpdfcentral/sidebarpdfcentral.component';
+import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    SidebarpdfcentralComponent
+    SidebarpdfcentralComponent,
+    UploadfilesComponent
   ],
   imports: [
     BrowserModule,
