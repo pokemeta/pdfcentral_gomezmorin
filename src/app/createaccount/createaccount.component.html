@@ -1,0 +1,32 @@
+<div class="h-screen w-screen bg-slate-800 text-white">
+
+    <div class="flex flex-col items-center w-full">
+
+        <div class="w-96 h-96 border-white border-solid border-4 p-5 mt-10">
+
+            <div class="w-full h-12 p-3 flex content-center items-center justify-between">
+
+                <label for="username" class="text-xl font-bold">Username:</label>
+                <input type="text" id="username" class="w-48 h-12 text-black p-2">
+
+            </div>
+            <br><br>
+            <div class="w-full h-12 p-3 flex content-center items-center justify-between">
+
+                <label for="password" class="text-xl  font-bold">Password:</label>
+                <input type="text" id="password" class="w-48 h-12 text-black p-2">
+                
+            </div>
+
+            <div class="flex content-center items-center justify-center mt-16">
+
+                <button type="button" class="p-5 bg-orange-500 active:bg-orange-700" (click)="sendAccount()">Create account</button>
+                <div id="loadingdots" class="dot-flashing hidden"></div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

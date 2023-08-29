@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SidebarpdfcentralComponent } from './sidebarpdfcentral/sidebarpdfcentral.component';
 import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
+import { LoginComponent } from './login/login.component';
+import { CreateaccountComponent } from './createaccount/createaccount.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SidebarpdfcentralComponent,
-    UploadfilesComponent
+    UploadfilesComponent,
+    LoginComponent,
+    CreateaccountComponent
   ],
   imports: [
     BrowserModule,

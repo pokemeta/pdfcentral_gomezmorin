@@ -56,6 +56,7 @@ export class UploadfilesComponent {
       Toastify({
         text: "Upload a file!",
         duration: 3000,
+        className: "text-3xl",
         style: {
           background: "red",
         },
