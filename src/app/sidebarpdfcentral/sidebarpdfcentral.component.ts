@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebarpdfcentral',
@@ -7,11 +8,13 @@ import { Component } from '@angular/core';
 })
 export class SidebarpdfcentralComponent {
 
+  constructor(private router: Router){}
+
   destroySession(){
 
     sessionStorage.clear();
 
-    location.reload();
+    this.router.navigate(['/login']);
 
   }
 

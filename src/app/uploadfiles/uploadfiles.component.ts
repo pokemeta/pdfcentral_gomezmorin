@@ -163,6 +163,52 @@ export class UploadfilesComponent {
 
   }
 
+  deleteFile(id: any){
+
+    let decision = confirm("Are you sure?");
+
+    if(decision){
+
+      let fileidform = new FormData();
+
+      fileidform.append("pdfid", id);
+
+      fetch('http://localhost/pdfcentral_backend/deactivatefile.php', {
+        method: "POST",
+        body: fileidform,
+      })
+      .then(res => res.json())
+      .then(data => {
+
+        this.retrieveFiles();
+
+        Toastify({
+          text: data,
+          duration: 3000,
+          className: "text-black text-3xl",
+          style: {
+            background: "yellow",
+          },
+        }).showToast();
+
+      })
+      .catch(error => {
+
+        /*Toastify({
+          text: error,
+          duration: 3000,
+          className: "text-3xl",
+          style: {
+            background: "red",
+          },
+        }).showToast();*/
+
+      });
+
+    }
+
+  }
+
   ngOnInit(){
 
     this.user_id = sessionStorage.getItem("userid");

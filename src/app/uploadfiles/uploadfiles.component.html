@@ -28,7 +28,8 @@
 
                 <tr>
                     <th class="border-white border-r-2">ID</th>
-                    <th>file</th>
+                    <th class="border-white border-r-2">file</th>
+                    <th>action</th>
                 </tr>
 
             </thead>
@@ -36,8 +37,11 @@
 
                 <tr class="border-white border-b-2">
                     <td class="border-white border-r-2">{{ file.id }}</td>
-                    <td>
+                    <td class="border-white border-r-2">
                         <a class="underline text-cyan-400 active:text-red-400" href="http://localhost/pdfcentral_backend/pdfs/{{ file.filename }}" download>{{ file.filename }}</a>
+                    </td>
+                    <td>
+                        <button type="button" class="p-3 bg-red-800 active:bg-red-950" (click)="deleteFile(file.id)">Delete</button>
                     </td>
                 </tr>
 
