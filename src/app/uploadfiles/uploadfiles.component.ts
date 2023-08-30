@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { single } from 'rxjs';
 import Toastify from 'toastify-js';
 
 @Component({
@@ -8,6 +9,7 @@ import Toastify from 'toastify-js';
 })
 export class UploadfilesComponent {
   cachedfiles: any;
+  user_id: any;
 
   changeBox(hovering: boolean){
 
@@ -44,11 +46,73 @@ export class UploadfilesComponent {
 
     if(this.cachedfiles != undefined){
 
+      let formupload = new FormData();
+
       for(let i = 0; i < this.cachedfiles.length; i++){
 
-        console.log(this.cachedfiles[i]);
+        let singlefile = this.cachedfiles[i];
+
+        //console.log(singlefile);
+
+        formupload.append("pdffiles[]", singlefile);
   
       }
+
+      formupload.append("userid", this.user_id);
+
+      fetch('http://localhost/pdfcentral_backend/fileupload.php', {
+        method: "POST",
+        body: formupload,
+      })
+      .then(res => res.json())
+      .then(data => {
+
+        if(typeof data == "string"){
+
+          Toastify({
+            text: data,
+            duration: 3000,
+            className: "text-3xl",
+            style: {
+              background: "green",
+            },
+          }).showToast();
+
+          this.cachedfiles = undefined;
+
+        }
+        else{
+
+          for(let i = 0; i < data.length; i++){
+
+            //console.log(data[i].error);
+
+            Toastify({
+              text: data[i].error,
+              duration: 3000,
+              className: "text-3xl",
+              style: {
+                background: "red",
+              },
+            }).showToast();
+
+          }
+
+        }
+
+      })
+      .catch(error => {
+
+        /*Toastify({
+          text: error,
+          duration: 3000,
+          className: "text-3xl",
+          style: {
+            background: "red",
+          },
+        }).showToast();*/
+
+      });
 
     }
     else{
@@ -63,6 +127,12 @@ export class UploadfilesComponent {
       }).showToast();
 
     }
+
+  }
+
+  ngOnInit(){
+
+    this.user_id = sessionStorage.getItem("userid");
 
   }
 
