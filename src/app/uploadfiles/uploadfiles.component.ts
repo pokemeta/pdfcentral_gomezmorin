@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { single } from 'rxjs';
 import Toastify from 'toastify-js';
 
 @Component({
@@ -10,6 +9,7 @@ import Toastify from 'toastify-js';
 export class UploadfilesComponent {
   cachedfiles: any;
   user_id: any;
+  files_uploaded: any;
 
   changeBox(hovering: boolean){
 
@@ -39,6 +39,37 @@ export class UploadfilesComponent {
   resetFiles(){
 
     this.cachedfiles = undefined;
+
+  }
+
+  retrieveFiles(){
+    let idform = new FormData();
+
+    idform.append("userid", this.user_id);
+
+    fetch('http://localhost/pdfcentral_backend/retrievefiles.php', {
+      method: "POST",
+      body: idform,
+    })
+    .then(res => res.json())
+    .then(data => {
+
+      this.files_uploaded = data;
+
+    })
+    .catch(error => {
+
+      /*Toastify({
+        text: error,
+        duration: 3000,
+        className: "text-3xl",
+        style: {
+          background: "red",
+        },
+      }).showToast();*/
+
+    });
+
 
   }
 
@@ -79,6 +110,8 @@ export class UploadfilesComponent {
           }).showToast();
 
           this.cachedfiles = undefined;
+
+          this.retrieveFiles();
 
         }
         else{
@@ -133,6 +166,8 @@ export class UploadfilesComponent {
   ngOnInit(){
 
     this.user_id = sessionStorage.getItem("userid");
+
+    this.retrieveFiles();
 
   }
 

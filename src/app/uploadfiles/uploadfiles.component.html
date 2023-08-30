@@ -22,6 +22,29 @@
 
         <button type="button" class="p-5 bg-green-500 active:bg-green-700 mt-5 w-full" (click)="uploadFiles()">Upload</button>
 
+        <table class="w-full mt-10 table-fixed text-center border-2 border-white border-solid">
+
+            <thead class="border-white border-b-2">
+
+                <tr>
+                    <th class="border-white border-r-2">ID</th>
+                    <th>file</th>
+                </tr>
+
+            </thead>
+            <tbody *ngFor="let file of files_uploaded">
+
+                <tr class="border-white border-b-2">
+                    <td class="border-white border-r-2">{{ file.id }}</td>
+                    <td>
+                        <a class="underline text-cyan-400 active:text-red-400" href="http://localhost/pdfcentral_backend/pdfs/{{ file.filename }}" download>{{ file.filename }}</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
     </div>
 
 </app-sidebarpdfcentral>
