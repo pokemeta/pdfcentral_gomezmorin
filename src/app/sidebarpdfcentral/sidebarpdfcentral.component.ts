@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class SidebarpdfcentralComponent {
 
+  destroySession(){
+
+    sessionStorage.clear();
+
+    location.reload();
+
+  }
+
 }

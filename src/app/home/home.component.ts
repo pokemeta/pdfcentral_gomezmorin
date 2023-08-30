@@ -8,11 +8,24 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
 
+  usernamesession: any;
+
   constructor(private router: Router){}
 
   ngOnInit(){
 
-    this.router.navigate(['login']);
+    this.usernamesession = sessionStorage.getItem("userlogged");
+
+    if(this.usernamesession){
+
+
+
+    }
+    else{
+
+      this.router.navigate(['login']);
+
+    }
 
   }
 
