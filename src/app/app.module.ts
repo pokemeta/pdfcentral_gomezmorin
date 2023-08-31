@@ -12,6 +12,7 @@ import { DgComponent } from './dg/dg.component';
 import { PapComponent } from './pap/pap.component';
 import { DiComponent } from './di/di.component';
 import { DbComponent } from './db/db.component';
+import { DgUploadComponent } from './dg-upload/dg-upload.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DbComponent } from './db/db.component';
     DgComponent,
     PapComponent,
     DiComponent,
-    DbComponent
+    DbComponent,
+    DgUploadComponent
   ],
   imports: [
     BrowserModule,

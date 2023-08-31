@@ -11,12 +11,15 @@ import { PapComponent } from './pap/pap.component';
 import { DiComponent } from './di/di.component';
 import { DbComponent } from './db/db.component';
 
+import { DgUploadComponent } from './dg-upload/dg-upload.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'uploadfiles', component: UploadfilesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dg', component: DgComponent },
+  { path: 'dg_upload', component: DgUploadComponent },
   { path: 'pap', component: PapComponent },
   { path: 'di', component: DiComponent },
   { path: 'db', component: DbComponent },
