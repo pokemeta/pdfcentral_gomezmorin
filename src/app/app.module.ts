@@ -8,6 +8,10 @@ import { SidebarpdfcentralComponent } from './sidebarpdfcentral/sidebarpdfcentra
 import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 import { LoginComponent } from './login/login.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
+import { DgComponent } from './dg/dg.component';
+import { PapComponent } from './pap/pap.component';
+import { DiComponent } from './di/di.component';
+import { DbComponent } from './db/db.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { CreateaccountComponent } from './createaccount/createaccount.component'
     SidebarpdfcentralComponent,
     UploadfilesComponent,
     LoginComponent,
-    CreateaccountComponent
+    CreateaccountComponent,
+    DgComponent,
+    PapComponent,
+    DiComponent,
+    DbComponent
   ],
   imports: [
     BrowserModule,

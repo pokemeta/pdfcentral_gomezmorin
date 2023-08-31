@@ -30,13 +30,46 @@ export class LoginComponent {
       .then(res => res.json())
       .then(data => {
 
-        /*console.log(data.username);
-        console.log(data.id);*/
+        if(typeof data == "object"){
 
-        sessionStorage.setItem("userlogged", data.username);
+          sessionStorage.setItem("userlogged", data.username);
+          sessionStorage.setItem("userid", data.id);
+
+          switch(data.area){
+
+            case "DG":
+              this.router.navigate(['/dg']);
+              break;
+            case "PAP":
+              this.router.navigate(['/pap']);
+              break;
+            case "DI":
+              this.router.navigate(['/di']);
+              break;
+            case "DB":
+              this.router.navigate(['/db']);
+              break;
+  
+          }
+
+        }
+        else{
+
+          Toastify({
+            text: data,
+            duration: 3000,
+            className: "text-3xl",
+            style: {
+              background: "red",
+            },
+          }).showToast();
+
+        }
+
+        /*sessionStorage.setItem("userlogged", data.username);
         sessionStorage.setItem("userid", data.id);
 
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home']);*/
 
       })
       .catch(error => {
