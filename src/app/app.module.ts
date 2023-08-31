@@ -15,6 +15,7 @@ import { DbComponent } from './db/db.component';
 import { DgUploadComponent } from './dg-upload/dg-upload.component';
 import { PapUploadComponent } from './pap-upload/pap-upload.component';
 import { DiUploadComponent } from './di-upload/di-upload.component';
+import { DbUploadComponent } from './db-upload/db-upload.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DiUploadComponent } from './di-upload/di-upload.component';
     DbComponent,
     DgUploadComponent,
     PapUploadComponent,
-    DiUploadComponent
+    DiUploadComponent,
+    DbUploadComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ import { DbComponent } from './db/db.component';
 import { DgUploadComponent } from './dg-upload/dg-upload.component';
 import { PapUploadComponent } from './pap-upload/pap-upload.component';
 import { DiUploadComponent } from './di-upload/di-upload.component';
+import { DbUploadComponent } from './db-upload/db-upload.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'di', component: DiComponent },
   { path: 'di_upload', component: DiUploadComponent },
   { path: 'db', component: DbComponent },
+  { path: 'db_upload', component: DbUploadComponent },
 ];
 
 @NgModule({
