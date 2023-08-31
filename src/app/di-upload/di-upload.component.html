@@ -1,0 +1,58 @@
+<app-sidebarpdfcentral>
+
+    <div class="flex h-screen bg-purple-800 p-10 justify-around flex-wrap text-white w-full">
+
+        <div class="flex-col w-full">
+
+            <h1 class="text-6xl mb-10 text-center">Upload files</h1>
+    
+            <div id="filebox" class="h-72 border-dashed border-4 border-pink-700 rounded flex flex-col justify-center items-center" (dragover)="changeBox(true)" (dragleave)="changeBox(false)" (drop)="changeBox(false)">
+            
+                <label for="fileinput" class="text-5xl font-bold opacity-30 absolute">Drag files(or click the box) to upload</label>
+    
+                <input type="file" id="fileinput" class="w-full h-full opacity-0" (change)="getFile($event)" multiple>
+            
+            </div>
+    
+            <div *ngIf="cachedfiles">
+    
+                <p>Files: {{ cachedfiles.length }} </p>
+    
+                <button type="button" class="p-5 bg-red-500 active:bg-red-700 mt-5 w-full" (click)="resetFiles()">Reset files</button>
+    
+            </div>
+    
+            <button type="button" class="p-5 bg-green-500 active:bg-green-700 mt-5 w-full" (click)="uploadFiles()">Upload</button>
+    
+            <table class="w-full mt-10 table-fixed text-center border-2 border-white border-solid">
+    
+                <thead class="border-white border-b-2">
+    
+                    <tr>
+                        <th class="border-white border-r-2">ID</th>
+                        <th class="border-white border-r-2">file</th>
+                        <th>action</th>
+                    </tr>
+    
+                </thead>
+                <tbody *ngFor="let file of files_uploaded">
+    
+                    <tr class="border-white border-b-2">
+                        <td class="border-white border-r-2">{{ file.id }}</td>
+                        <td class="border-white border-r-2">
+                            <a class="underline text-cyan-400 active:text-red-400" href="http://localhost/pdfcentral_backend/pdfs/{{ file.filename }}" download>{{ file.filename }}</a>
+                        </td>
+                        <td>
+                            <button type="button" class="p-3 bg-red-800 active:bg-red-950 text-white" (click)="deleteFile(file.id)">Delete</button>
+                        </td>
+                    </tr>
+    
+                </tbody>
+    
+            </table>
+    
+        </div>
+
+    </div>
+
+</app-sidebarpdfcentral>
