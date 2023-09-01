@@ -3,26 +3,30 @@
     <div class="flex h-screen bg-gray-500 p-10 justify-around flex-wrap text-white w-full">
 
         <div class="flex-col w-full">
+            
+            <div *ngIf="permissionbool">
 
-            <h1 class="text-6xl mb-10 text-center">Upload files</h1>
+                <h1 class="text-6xl mb-10 text-center">Upload files</h1>
     
-            <div id="filebox" class="h-72 border-dashed border-4 border-black rounded flex flex-col justify-center items-center" (dragover)="changeBox(true)" (dragleave)="changeBox(false)" (drop)="changeBox(false)">
-            
-                <label for="fileinput" class="text-5xl font-bold opacity-30 absolute">Drag files(or click the box) to upload</label>
-    
-                <input type="file" id="fileinput" class="w-full h-full opacity-0" (change)="getFile($event)" multiple>
-            
+                <div id="filebox" class="h-72 border-dashed border-4 border-black rounded flex flex-col justify-center items-center" (dragover)="changeBox(true)" (dragleave)="changeBox(false)" (drop)="changeBox(false)">
+                
+                    <label for="fileinput" class="text-5xl font-bold opacity-30 absolute">Drag files(or click the box) to upload</label>
+        
+                    <input type="file" id="fileinput" class="w-full h-full opacity-0" (change)="getFile($event)" multiple>
+                
+                </div>
+        
+                <div *ngIf="cachedfiles">
+        
+                    <p>Files: {{ cachedfiles.length }} </p>
+        
+                    <button type="button" class="p-5 bg-red-500 active:bg-red-700 mt-5 w-full" (click)="resetFiles()">Reset files</button>
+        
+                </div>
+        
+                <button type="button" class="p-5 bg-green-500 active:bg-green-700 mt-5 w-full" (click)="uploadFiles()">Upload</button>
+
             </div>
-    
-            <div *ngIf="cachedfiles">
-    
-                <p>Files: {{ cachedfiles.length }} </p>
-    
-                <button type="button" class="p-5 bg-red-500 active:bg-red-700 mt-5 w-full" (click)="resetFiles()">Reset files</button>
-    
-            </div>
-    
-            <button type="button" class="p-5 bg-green-500 active:bg-green-700 mt-5 w-full" (click)="uploadFiles()">Upload</button>
     
             <table class="w-full mt-10 table-fixed text-center border-2 border-white border-solid">
     

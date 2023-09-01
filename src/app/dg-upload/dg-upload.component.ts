@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import Toastify from 'toastify-js';
 
-
 @Component({
   selector: 'app-dg-upload',
   templateUrl: './dg-upload.component.html',
@@ -11,6 +10,9 @@ export class DgUploadComponent {
   cachedfiles: any;
   user_id: any;
   files_uploaded: any;
+
+  userrole: any;
+  permissionbool:boolean = false;
 
   currentarea:string = "dg";
 
@@ -219,6 +221,13 @@ export class DgUploadComponent {
   ngOnInit(){
 
     this.user_id = sessionStorage.getItem("userid");
+    this.userrole = sessionStorage.getItem("userrole");
+
+    if(this.userrole != 'usuario'){
+
+      this.permissionbool = true;
+
+    }
 
     this.retrieveFiles();
 

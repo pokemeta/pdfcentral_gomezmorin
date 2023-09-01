@@ -12,6 +12,8 @@ export class DbComponent {
   userrole: any;
   permissionbool:boolean = false;
   
+
+  
   constructor(private router: Router){}
 
   ngOnInit(){

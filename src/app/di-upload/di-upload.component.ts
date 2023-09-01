@@ -11,6 +11,9 @@ export class DiUploadComponent {
   user_id: any;
   files_uploaded: any;
 
+  userrole: any;
+  permissionbool:boolean = false;
+
   currentarea:string = "di";
 
   changeBox(hovering: boolean){
@@ -218,7 +221,14 @@ export class DiUploadComponent {
   ngOnInit(){
 
     this.user_id = sessionStorage.getItem("userid");
+    this.userrole = sessionStorage.getItem("userrole");
 
+    if(this.userrole != 'usuario'){
+
+      this.permissionbool = true;
+
+    }
+    
     this.retrieveFiles();
 
   }
