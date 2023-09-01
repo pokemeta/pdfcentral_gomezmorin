@@ -34,6 +34,7 @@ export class LoginComponent {
 
           sessionStorage.setItem("userlogged", data.username);
           sessionStorage.setItem("userid", data.id);
+          sessionStorage.setItem("userrole", data.rol);
 
           switch(data.area){
 

@@ -3,7 +3,7 @@
     <div class="flex h-screen bg-purple-800 p-10 justify-around flex-wrap text-white w-full">
 
         <a routerLink="/di_upload" class="w-96 h-72 bg-pink-500 hover:bg-cyan-700 p-5 break-words flex justify-center items-center">Upload files</a>
-        <a routerLink="/di_users" class="w-96 h-72 bg-gray-950 hover:bg-gray-700 p-5 break-words flex justify-center items-center">Manage users</a>
+        <a *ngIf="permissionbool" routerLink="/di_users" class="w-96 h-72 bg-gray-950 hover:bg-gray-700 p-5 break-words flex justify-center items-center">Manage users</a>
 
     </div>
 
