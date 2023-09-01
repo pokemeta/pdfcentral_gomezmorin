@@ -1,0 +1,38 @@
+<app-sidebarpdfcentral>
+
+    <div class="h-screen bg-gray-500 p-10 text-white w-full">
+
+        <div class="w-full h-20 text-center">
+
+            <h1 class="text-5xl font-bold">Userlist of DG</h1>
+
+        </div>
+
+        <table class="w-full mt-10 table-fixed text-center border-2 border-white border-solid">
+    
+            <thead class="border-white border-b-2 h-12">
+
+                <tr>
+                    <th class="border-white border-r-2">ID</th>
+                    <th class="border-white border-r-2">user</th>
+                    <th>action</th>
+                </tr>
+
+            </thead>
+            <tbody *ngFor="let u of users">
+
+                <tr class="border-white border-b-2 h-12">
+                    <td class="border-white border-r-2">{{ u.id }}</td>
+                    <td class="border-white border-r-2">{{ u.username }}</td>
+                    <td>
+                        <button type="button" class="p-3 bg-red-800 active:bg-red-950 text-white" (click)="deactivateUser(u.id)">Delete</button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</app-sidebarpdfcentral>

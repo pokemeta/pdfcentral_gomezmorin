@@ -16,6 +16,8 @@ import { PapUploadComponent } from './pap-upload/pap-upload.component';
 import { DiUploadComponent } from './di-upload/di-upload.component';
 import { DbUploadComponent } from './db-upload/db-upload.component';
 
+import { DgUsersComponent } from './dg-users/dg-users.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dg', component: DgComponent },
   { path: 'dg_upload', component: DgUploadComponent },
+  { path: 'dg_users', component: DgUsersComponent },
   { path: 'pap', component: PapComponent },
   { path: 'pap_upload', component: PapUploadComponent },
   { path: 'di', component: DiComponent },
