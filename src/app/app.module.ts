@@ -17,7 +17,9 @@ import { PapUploadComponent } from './pap-upload/pap-upload.component';
 import { DiUploadComponent } from './di-upload/di-upload.component';
 import { DbUploadComponent } from './db-upload/db-upload.component';
 import { DgUsersComponent } from './dg-users/dg-users.component';
-
+import { PapUsersComponent } from './pap-users/pap-users.component';
+import { DiUsersComponent } from './di-users/di-users.component';
+import { DbUsersComponent } from './db-users/db-users.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,10 @@ import { DgUsersComponent } from './dg-users/dg-users.component';
     PapUploadComponent,
     DiUploadComponent,
     DbUploadComponent,
-    DgUsersComponent
+    DgUsersComponent,
+    PapUsersComponent,
+    DiUsersComponent,
+    DbUsersComponent,
   ],
   imports: [
     BrowserModule,

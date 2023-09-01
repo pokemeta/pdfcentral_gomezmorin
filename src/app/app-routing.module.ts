@@ -17,21 +17,28 @@ import { DiUploadComponent } from './di-upload/di-upload.component';
 import { DbUploadComponent } from './db-upload/db-upload.component';
 
 import { DgUsersComponent } from './dg-users/dg-users.component';
+import { PapUsersComponent } from './pap-users/pap-users.component';
+import { DiUsersComponent } from './di-users/di-users.component';
+import { DbUsersComponent } from './db-users/db-users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'uploadfiles', component: UploadfilesComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'createaccount', component: CreateaccountComponent },
   { path: 'dg', component: DgComponent },
   { path: 'dg_upload', component: DgUploadComponent },
   { path: 'dg_users', component: DgUsersComponent },
   { path: 'pap', component: PapComponent },
   { path: 'pap_upload', component: PapUploadComponent },
+  { path: 'pap_users', component: PapUsersComponent },
   { path: 'di', component: DiComponent },
   { path: 'di_upload', component: DiUploadComponent },
+  { path: 'di_users', component: DiUsersComponent },
   { path: 'db', component: DbComponent },
   { path: 'db_upload', component: DbUploadComponent },
+  { path: 'db_users', component: DbUsersComponent },
 ];
 
 @NgModule({
