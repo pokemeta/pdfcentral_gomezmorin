@@ -9,6 +9,115 @@ import Toastify from 'toastify-js';
 export class AppComponent {
   title = 'pdfcentral_gomezmorin';
 
+  checkNotification(id: any){
+
+    let idform = new FormData();
+
+    idform.append("idnotif", id);
+
+    fetch('http://localhost/pdfcentral_backend/readnotif.php', {
+      method: "POST",
+      body: idform,
+    });
+
+  }
+
+  ngAfterViewInit(){
+
+    window.setInterval(function() {
+
+      if(sessionStorage.getItem("userlogged")){
+
+        //console.log("logged in");
+
+        fetch('http://localhost/pdfcentral_backend/checknotifs.php', {
+          method: "GET"
+        })
+        .then(res => res.json())
+        .then(data => {
+
+          if(data != null){
+
+            data.forEach(element => {
+
+              Toastify({
+                text: `new data id ${element.id} created at ${element.datetimes}`,
+                duration: 3000,
+                className: "text-black text-3xl",
+                style: {
+                  background: "yellow",
+                },
+              }).showToast();
+
+              let idform = new FormData();
+
+              idform.append("idnotif", element.id);
+
+              fetch('http://localhost/pdfcentral_backend/readnotif.php', {
+                method: "POST",
+                body: idform,
+              })
+              .then(res => res.json())
+              .then(data => {
+          
+                //console.log(data);
+          
+                /*Toastify({
+                  text: data,
+                  duration: 3000,
+                  className: "text-black text-3xl",
+                  style: {
+                    background: "yellow",
+                  },
+                }).showToast();*/
+          
+              })
+              .catch(error => {
+          
+                /*Toastify({
+                  text: error,
+                  duration: 3000,
+                  className: "text-3xl",
+                  style: {
+                    background: "red",
+                  },
+                }).showToast();*/
+          
+              });
+              
+            });
+ 
+          }
+  
+          /*Toastify({
+            text: data,
+            duration: 3000,
+            className: "text-black text-3xl",
+            style: {
+              background: "yellow",
+            },
+          }).showToast();*/
+  
+        })
+        .catch(error => {
+  
+          /*Toastify({
+            text: error,
+            duration: 3000,
+            className: "text-3xl",
+            style: {
+              background: "red",
+            },
+          }).showToast();*/
+  
+        });
+
+      }
+    
+    }, 5000);
+
+  }
+
   /*ngAfterViewInit(){
 
     Toastify({

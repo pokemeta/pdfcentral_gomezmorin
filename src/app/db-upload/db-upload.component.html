@@ -35,7 +35,7 @@
                     <tr>
                         <th class="border-white border-r-2">ID</th>
                         <th class="border-white border-r-2">file</th>
-                        <th>action</th>
+                        <th *ngIf="permissionbool">action</th>
                     </tr>
     
                 </thead>
@@ -46,7 +46,7 @@
                         <td class="border-white border-r-2">
                             <a class="underline text-cyan-800 active:text-red-400" href="http://localhost/pdfcentral_backend/pdfs/{{ file.filename }}" download>{{ file.filename }}</a>
                         </td>
-                        <td>
+                        <td *ngIf="permissionbool">
                             <button type="button" class="p-3 bg-red-800 active:bg-red-950 text-white" (click)="deleteFile(file.id)">Delete</button>
                         </td>
                     </tr>
