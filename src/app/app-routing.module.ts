@@ -23,6 +23,8 @@ import { DbUsersComponent } from './db-users/db-users.component';
 
 import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
 
+import { DgViewsentfilesComponent } from './dg-viewsentfiles/dg-viewsentfiles.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -32,6 +34,7 @@ const routes: Routes = [
   { path: 'dg', component: DgComponent },
   { path: 'dg_upload', component: DgUploadComponent },
   { path: 'dg_send', component: DgSendFilesComponent },
+  { path: 'dg_viewfiles', component: DgViewsentfilesComponent },
   { path: 'dg_users', component: DgUsersComponent },
   { path: 'pap', component: PapComponent },
   { path: 'pap_upload', component: PapUploadComponent },

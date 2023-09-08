@@ -22,10 +22,12 @@ export class DgSendFilesComponent {
     let fileoption = document.getElementById("selectfile") as HTMLInputElement;
     let useroption = document.getElementById("selectuser") as HTMLInputElement;
     let areaorigin = this.currentarea;
+    let usersender = this.user_id;
 
     let filedataform = new FormData();
 
     filedataform.append("file", fileoption.value);
+    filedataform.append("usersender", usersender);
     filedataform.append("user", useroption.value);
     filedataform.append("area", areaorigin);
 

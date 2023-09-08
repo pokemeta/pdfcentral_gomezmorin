@@ -21,6 +21,7 @@ import { PapUsersComponent } from './pap-users/pap-users.component';
 import { DiUsersComponent } from './di-users/di-users.component';
 import { DbUsersComponent } from './db-users/db-users.component';
 import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
+import { DgViewsentfilesComponent } from './dg-viewsentfiles/dg-viewsentfiles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
     DiUsersComponent,
     DbUsersComponent,
     DgSendFilesComponent,
+    DgViewsentfilesComponent,
   ],
   imports: [
     BrowserModule,
