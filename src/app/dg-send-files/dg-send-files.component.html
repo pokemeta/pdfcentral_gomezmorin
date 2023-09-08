@@ -1,0 +1,64 @@
+<app-sidebarpdfcentral>
+
+    <div class="flex h-screen bg-gray-500 p-10 justify-around flex-wrap text-white w-full">
+
+        <div class="flex-col w-full">
+    
+            <table class="w-full mt-10 table-fixed text-center border-2 border-white border-solid">
+    
+                <thead class="border-white border-b-2">
+    
+                    <tr>
+                        <th class="border-white border-r-2">ID</th>
+                        <th class="border-white border-r-2">file</th>
+                        <th>action</th>
+                    </tr>
+    
+                </thead>
+                <tbody>
+    
+                    <tr class="border-white border-b-2">
+                        <td class="border-white border-r-2">51561</td>
+                        <td class="border-white border-r-2">
+                            <a class="underline text-cyan-400 active:text-red-400" download>eeefaewartewqtr.pdf</a>
+                        </td>
+                        <td>
+                            <button type="button" class="p-3 bg-red-800 active:bg-red-950">Delete</button>
+                        </td>
+                    </tr>
+    
+                </tbody>
+    
+            </table>
+
+            <div>
+
+                <h1>select which file to send</h1>
+                <select class="bg-slate-600 p-3 w-96" name="selectfile" id="selectfile" (change)="setFile = true;">
+                    <option disabled selected>select a file</option>
+                    <option *ngFor="let f of files_uploaded; let i = index" value="{{ f.id }}">{{ f.filename }}</option>
+                </select>
+
+            </div>
+
+            <div *ngIf="setFile">
+
+                <h1>select user to send file</h1>
+                <select class="bg-slate-600 p-3 w-96" name="selectuser" id="selectuser"  (change)="setUser = true;">
+                    <option disabled selected>select a user</option>
+                    <option *ngFor="let u of users_registered; let i = index" value="{{ u.id }}">{{ u.username }}</option>
+                </select>
+
+            </div>
+
+            <div *ngIf="setFile && setUser">
+
+                <button class="w-full bg-lime-500 hover:bg-lime-700 p-5" (click)="sendFile()">Send</button>
+
+            </div>
+    
+        </div>
+
+    </div>
+
+</app-sidebarpdfcentral>

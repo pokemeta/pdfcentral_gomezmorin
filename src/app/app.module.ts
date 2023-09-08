@@ -20,6 +20,7 @@ import { DgUsersComponent } from './dg-users/dg-users.component';
 import { PapUsersComponent } from './pap-users/pap-users.component';
 import { DiUsersComponent } from './di-users/di-users.component';
 import { DbUsersComponent } from './db-users/db-users.component';
+import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { DbUsersComponent } from './db-users/db-users.component';
     PapUsersComponent,
     DiUsersComponent,
     DbUsersComponent,
+    DgSendFilesComponent,
   ],
   imports: [
     BrowserModule,

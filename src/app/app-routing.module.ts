@@ -21,6 +21,8 @@ import { PapUsersComponent } from './pap-users/pap-users.component';
 import { DiUsersComponent } from './di-users/di-users.component';
 import { DbUsersComponent } from './db-users/db-users.component';
 
+import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -29,6 +31,7 @@ const routes: Routes = [
   { path: 'createaccount', component: CreateaccountComponent },
   { path: 'dg', component: DgComponent },
   { path: 'dg_upload', component: DgUploadComponent },
+  { path: 'dg_send', component: DgSendFilesComponent },
   { path: 'dg_users', component: DgUsersComponent },
   { path: 'pap', component: PapComponent },
   { path: 'pap_upload', component: PapUploadComponent },

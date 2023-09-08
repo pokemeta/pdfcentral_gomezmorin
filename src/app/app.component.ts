@@ -30,8 +30,15 @@ export class AppComponent {
 
         //console.log("logged in");
 
+        let usid:any = sessionStorage.getItem("userid");
+
+        let usidform = new FormData();
+
+        usidform.append("id", usid);
+
         fetch('http://localhost/pdfcentral_backend/checknotifs.php', {
-          method: "GET"
+          method: "POST",
+          body: usidform
         })
         .then(res => res.json())
         .then(data => {
