@@ -81,7 +81,6 @@ export class DgViewsentfilesComponent {
     .then(data => {
 
       this.user_sent_files = data;
-      console.log(this.user_sent_files);
 
     })
     .catch(error => {
