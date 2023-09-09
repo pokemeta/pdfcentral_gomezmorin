@@ -7,7 +7,10 @@ import { Component } from '@angular/core';
 })
 export class DgViewsentfilesComponent {
   user_id: any;
-  user_sent_files: any;
+  user_sent_files_dg: any;
+  user_sent_files_pap: any;
+  user_sent_files_di: any;
+  user_sent_files_db: any;
 
   setViewed(id: any){
 
@@ -80,7 +83,14 @@ export class DgViewsentfilesComponent {
     .then(res => res.json())
     .then(data => {
 
-      this.user_sent_files = data;
+      this.user_sent_files_dg = data[0].dg_res;
+      this.user_sent_files_pap = data[0].pap_res;
+      this.user_sent_files_di = data[0].di_res;
+      this.user_sent_files_db = data[0].db_res;
+      /*console.log(data[0].dg_res);
+      console.log(data[0].pap_res);
+      console.log(data[0].di_res);
+      console.log(data[0].db_res);*/
 
     })
     .catch(error => {
