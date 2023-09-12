@@ -44,7 +44,7 @@
                     <tr class="border-white border-b-2">
                         <td class="border-white border-r-2">{{ file.id }}</td>
                         <td class="border-white border-r-2">
-                            <a class="underline text-cyan-800 active:text-red-400" href="http://localhost/pdfcentral_backend/pdfs/{{ file.filename }}" download>{{ file.filename }}</a>
+                            <a class="underline text-cyan-800 active:text-red-400" href="http://localhost/pdfcentral_backend/pdfs/{{ currentarea }}/{{ file.filename }}"  target="_blank">{{ file.filename }}</a>
                         </td>
                         <td *ngIf="permissionbool">
                             <button type="button" class="p-3 bg-red-800 active:bg-red-950 text-white" (click)="deleteFile(file.id)">Delete</button>
