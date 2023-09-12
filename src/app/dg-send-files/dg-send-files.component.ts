@@ -28,31 +28,61 @@ export class DgSendFilesComponent {
 
     filedataform.append("file", fileoption.value);
     filedataform.append("usersender", usersender);
-    filedataform.append("user", useroption.value);
+    filedataform.append("usertype", useroption.value);
     filedataform.append("area", areaorigin);
 
-    fetch('http://localhost/pdfcentral_backend/sendfileuser.php', {
-      method: "POST",
-      body: filedataform,
-    })
-    .then(res => res.json())
-    .then(data => {
+    if(useroption.value == "directores" || useroption.value == "lideres" || useroption.value == "usuarios"){
 
-      //this.files_uploaded = data;
+      fetch('http://localhost/pdfcentral_backend/sendfileuser_multiple.php', {
+        method: "POST",
+        body: filedataform,
+      })
+      .then(res => res.json())
+      .then(data => {
 
-    })
-    .catch(error => {
+        //this.files_uploaded = data;
 
-      /*Toastify({
-        text: error,
-        duration: 3000,
-        className: "text-3xl",
-        style: {
-          background: "red",
-        },
-      }).showToast();*/
+      })
+      .catch(error => {
 
-    });
+        /*Toastify({
+          text: error,
+          duration: 3000,
+          className: "text-3xl",
+          style: {
+            background: "red",
+          },
+        }).showToast();*/
+
+      });
+
+    }
+    else{
+
+      fetch('http://localhost/pdfcentral_backend/sendfileuser.php', {
+        method: "POST",
+        body: filedataform,
+      })
+      .then(res => res.json())
+      .then(data => {
+
+        //this.files_uploaded = data;
+
+      })
+      .catch(error => {
+
+        /*Toastify({
+          text: error,
+          duration: 3000,
+          className: "text-3xl",
+          style: {
+            background: "red",
+          },
+        }).showToast();*/
+
+      });
+
+    }
 
   }
 

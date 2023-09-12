@@ -18,8 +18,12 @@
 
                 <h1>select user to send file</h1>
                 <select class="bg-slate-600 p-3 w-96" name="selectuser" id="selectuser"  (change)="setUser = true;">
-                    <option disabled selected>select a user</option>
-                    <option *ngFor="let u of users_registered; let i = index" value="{{ u.id }}">{{ u.username }}</option>
+                    <option class="text-lime-400" disabled selected>select a type of users</option>
+                    <option value="directores">Directores</option>
+                    <option value="lideres">Lideres</option>
+                    <option value="usuarios">Usuarios</option>
+                    <option class="text-lime-400" disabled>or select a user</option>
+                    <option *ngFor="let u of users_registered" value="{{ u.id }}">{{ u.username }}</option>
                 </select>
 
             </div>
