@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 import Toastify from 'toastify-js';
 
 @Component({
@@ -15,6 +16,8 @@ export class PapUploadComponent {
   permissionbool:boolean = false;
 
   currentarea:string = "pap";
+
+  constructor(public link: AppComponent){}
 
   changeBox(hovering: boolean){
 
@@ -53,7 +56,7 @@ export class PapUploadComponent {
     idform.append("userid", this.user_id);
     idform.append("area", this.currentarea);
 
-    fetch('http://localhost/pdfcentral_backend/retrievefiles.php', {
+    fetch(this.link.baseURL() + 'retrievefiles.php', {
       method: "POST",
       body: idform,
     })
@@ -99,7 +102,7 @@ export class PapUploadComponent {
 
       formupload.append("area", this.currentarea);
 
-      fetch('http://localhost/pdfcentral_backend/fileupload.php', {
+      fetch(this.link.baseURL() + 'fileupload.php', {
         method: "POST",
         body: formupload,
       })
@@ -182,7 +185,7 @@ export class PapUploadComponent {
       fileidform.append("pdfid", id);
       fileidform.append("area", this.currentarea);
 
-      fetch('http://localhost/pdfcentral_backend/deactivatefile.php', {
+      fetch(this.link.baseURL() + 'deactivatefile.php', {
         method: "POST",
         body: fileidform,
       })
