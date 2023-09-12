@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 import Toastify from 'toastify-js';
 
 @Component({
@@ -11,13 +12,15 @@ export class DiUsersComponent {
 
   users: any;
 
+  constructor(public link: AppComponent){}
+
   getUsers(){
 
     let usersform = new FormData();
 
     usersform.append("area", this.currentarea);
 
-    fetch('http://localhost/pdfcentral_backend/geusers.php', {
+    fetch(this.link.baseURL() + 'geusers.php', {
       method: "POST",
       body: usersform,
     })
@@ -52,7 +55,7 @@ export class DiUsersComponent {
 
       idform.append("id", id);
   
-      fetch('http://localhost/pdfcentral_backend/deactivateuser.php', {
+      fetch(this.link.baseURL() + 'deactivateuser.php', {
         method: "POST",
         body: idform,
       })
