@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-dg-viewsentfiles',
@@ -12,13 +13,15 @@ export class DgViewsentfilesComponent {
   user_sent_files_di: any;
   user_sent_files_db: any;
 
+  constructor(public link: AppComponent){}
+
   setViewed(id: any){
 
     let idform = new FormData();
 
     idform.append("id", id);
 
-    fetch('http://localhost/pdfcentral_backend/userset_check.php', {
+    fetch(this.link.baseURL() + 'userset_check.php', {
       method: "POST",
       body: idform,
     })
@@ -47,7 +50,7 @@ export class DgViewsentfilesComponent {
 
     idform.append("id", id);
 
-    fetch('http://localhost/pdfcentral_backend/userset_check_definitive.php', {
+    fetch(this.link.baseURL() + 'userset_check_definitive.php', {
       method: "POST",
       body: idform,
     })
@@ -76,7 +79,7 @@ export class DgViewsentfilesComponent {
 
     idform.append("id", this.user_id);
 
-    fetch('http://localhost/pdfcentral_backend/sent_files_retrieve.php', {
+    fetch(this.link.baseURL() + 'sent_files_retrieve.php', {
       method: "POST",
       body: idform,
     })

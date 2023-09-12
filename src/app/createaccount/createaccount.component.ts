@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 import Toastify from 'toastify-js';
 import { Router } from '@angular/router';
 
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CreateaccountComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, public link: AppComponent){}
 
   sendAccount(){
 
@@ -23,7 +24,7 @@ export class CreateaccountComponent {
       userform.append("username", user.value);
       userform.append("password", pass.value);
 
-      fetch('http://localhost/pdfcentral_backend/create_user.php', {
+      fetch(this.link.baseURL() + 'create_user.php', {
         method: "POST",
         body: userform,
       })

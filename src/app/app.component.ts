@@ -9,22 +9,31 @@ import Toastify from 'toastify-js';
 export class AppComponent {
   title = 'pdfcentral_gomezmorin';
 
+  //baseLink:string = "http://localhost/pdfcentral_backend/";
+  baseLink:string = "http://10.63.70.117/pdfcentral_backend/";
+
   checkNotification(id: any){
 
     let idform = new FormData();
 
     idform.append("idnotif", id);
 
-    fetch('http://localhost/pdfcentral_backend/readnotif.php', {
+    fetch(this.baseLink + 'readnotif.php', {
       method: "POST",
       body: idform,
     });
 
   }
 
+  baseURL(){
+
+    return this.baseLink;
+
+  }
+
   ngAfterViewInit(){
 
-    window.setInterval(function() {
+    window.setInterval(() => {
 
       if(sessionStorage.getItem("userlogged")){
 
@@ -36,7 +45,7 @@ export class AppComponent {
 
         usidform.append("id", usid);
 
-        fetch('http://localhost/pdfcentral_backend/checknotifs.php', {
+        fetch(this.baseLink + 'checknotifs.php', {
           method: "POST",
           body: usidform
         })
@@ -60,7 +69,7 @@ export class AppComponent {
 
               idform.append("idnotif", element.id);
 
-              fetch('http://localhost/pdfcentral_backend/readnotif.php', {
+              fetch(this.baseLink + 'readnotif.php', {
                 method: "POST",
                 body: idform,
               })

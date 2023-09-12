@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 import Toastify from 'toastify-js';
 
 @Component({
@@ -9,7 +10,7 @@ import Toastify from 'toastify-js';
 })
 export class LoginComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private link: AppComponent){}
 
   sendLogin(){
 
@@ -23,7 +24,7 @@ export class LoginComponent {
       userform.append("username", user.value);
       userform.append("password", pass.value);
 
-      fetch('http://localhost/pdfcentral_backend/login_user.php', {
+      fetch(this.link.baseURL() + 'login_user.php', {
         method: "POST",
         body: userform,
       })

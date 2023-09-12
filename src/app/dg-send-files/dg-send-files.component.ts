@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-dg-send-files',
@@ -17,6 +18,8 @@ export class DgSendFilesComponent {
   setFile:boolean = false;
   setUser:boolean = false;
 
+  constructor(public link: AppComponent){}
+
   sendFile(){
 
     let fileoption = document.getElementById("selectfile") as HTMLInputElement;
@@ -24,16 +27,16 @@ export class DgSendFilesComponent {
     let areaorigin = this.currentarea;
     let usersender = this.user_id;
 
-    let filedataform = new FormData();
-
-    filedataform.append("file", fileoption.value);
-    filedataform.append("usersender", usersender);
-    filedataform.append("usertype", useroption.value);
-    filedataform.append("area", areaorigin);
-
     if(useroption.value == "directores" || useroption.value == "lideres" || useroption.value == "usuarios"){
 
-      fetch('http://localhost/pdfcentral_backend/sendfileuser_multiple.php', {
+      let filedataform = new FormData();
+
+      filedataform.append("file", fileoption.value);
+      filedataform.append("usersender", usersender);
+      filedataform.append("usertype", useroption.value);
+      filedataform.append("area", areaorigin);
+
+      fetch(this.link.baseURL() + 'sendfileuser_multiple.php', {
         method: "POST",
         body: filedataform,
       })
@@ -59,7 +62,14 @@ export class DgSendFilesComponent {
     }
     else{
 
-      fetch('http://localhost/pdfcentral_backend/sendfileuser.php', {
+      let filedataform = new FormData();
+
+      filedataform.append("file", fileoption.value);
+      filedataform.append("usersender", usersender);
+      filedataform.append("user", useroption.value);
+      filedataform.append("area", areaorigin);
+
+      fetch(this.link.baseURL() + 'sendfileuser.php', {
         method: "POST",
         body: filedataform,
       })
@@ -92,7 +102,7 @@ export class DgSendFilesComponent {
     idform.append("userid", this.user_id);
     idform.append("area", this.currentarea);
 
-    fetch('http://localhost/pdfcentral_backend/retrievefiles.php', {
+    fetch(this.link.baseURL() + 'retrievefiles.php', {
       method: "POST",
       body: idform,
     })
@@ -120,7 +130,7 @@ export class DgSendFilesComponent {
 
   retrieveUsers(){
 
-    fetch('http://localhost/pdfcentral_backend/getusers_global.php', {
+    fetch(this.link.baseURL() + 'getusers_global.php', {
       method: "GET"
     })
     .then(res => res.json())
