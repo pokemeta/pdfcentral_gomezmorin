@@ -1,0 +1,70 @@
+<app-sidebarpdfcentral>
+
+    <div class="flex h-screen bg-green-500 p-10 justify-around flex-wrap text-white w-full">
+
+        <div class="flex-col w-full">
+
+            <h1 class="mb-10">Files that arrived to you</h1>
+
+            <h3>Direccion General</h3>
+            <hr class="w-full mb-5">
+            <ng-container *ngFor="let f of user_sent_files_dg">
+
+                <div class="w-full h-32 bg-white rounded-2xl p-3 flex items-center mb-5">
+
+                    <a (click)="setViewed(f.id)" class="text-2xl flex-grow underline text-cyan-600 active:text-red-600" href="{{ this.link.baseURL() }}pdfs/{{ f.area_origin }}/{{ f.filename }}" target="_blank">{{ f.filename }}</a>
+                    <button (click)="setChecked(f.id)" class="p-5 bg-indigo-500 hover:bg-indigo-700 rounded-2xl">Mark as checked</button>
+    
+    
+                </div>
+
+            </ng-container>
+
+            <h3>PAP</h3>
+            <hr class="w-full mb-5">
+            <ng-container *ngFor="let f of user_sent_files_pap">
+
+                <div class="w-full h-32 bg-white rounded-2xl p-3 flex items-center mb-5">
+
+                    <a (click)="setViewed(f.id)" class="text-2xl flex-grow underline text-cyan-600 active:text-red-600" href="{{ this.link.baseURL() }}pdfs/{{ f.area_origin }}/{{ f.filename }}" target="_blank">{{ f.filename }}</a>
+                    <button (click)="setChecked(f.id)" class="p-5 bg-indigo-500 hover:bg-indigo-700 rounded-2xl">Mark as checked</button>
+    
+    
+                </div>
+
+            </ng-container>
+
+            <h3>Direccion de informatica</h3>
+            <hr class="w-full mb-5">
+            <ng-container *ngFor="let f of user_sent_files_di">
+
+                <div class="w-full h-32 bg-white rounded-2xl p-3 flex items-center mb-5">
+
+                    <a (click)="setViewed(f.id)" class="text-2xl flex-grow underline text-cyan-600 active:text-red-600" href="{{ this.link.baseURL() }}pdfs/{{ f.area_origin }}/{{ f.filename }}" target="_blank">{{ f.filename }}</a>
+                    <button (click)="setChecked(f.id)" class="p-5 bg-indigo-500 hover:bg-indigo-700 rounded-2xl">Mark as checked</button>
+    
+    
+                </div>
+
+            </ng-container>
+
+            
+            <h3>Direccion de biblioteca</h3>
+            <hr class="w-full mb-5">
+            <ng-container *ngFor="let f of user_sent_files_db">
+
+                <div class="w-full h-32 bg-white rounded-2xl p-3 flex items-center mb-5">
+
+                    <a (click)="setViewed(f.id)" class="text-2xl flex-grow underline text-cyan-600 active:text-red-600" href="{{ this.link.baseURL() }}pdfs/{{ f.area_origin }}/{{ f.filename }}" target="_blank">{{ f.filename }}</a>
+                    <button (click)="setChecked(f.id)" class="p-5 bg-indigo-500 hover:bg-indigo-700 rounded-2xl">Mark as checked</button>
+    
+    
+                </div>
+
+            </ng-container>
+
+        </div>
+
+    </div>
+
+</app-sidebarpdfcentral>

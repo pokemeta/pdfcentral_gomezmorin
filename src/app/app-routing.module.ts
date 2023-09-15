@@ -24,10 +24,12 @@ import { DbUsersComponent } from './db-users/db-users.component';
 import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
 import { PapSendFilesComponent } from './pap-send-files/pap-send-files.component';
 import { DiSendFilesComponent } from './di-send-files/di-send-files.component';
+import { DbSendFilesComponent } from './db-send-files/db-send-files.component';
 
 import { DgViewsentfilesComponent } from './dg-viewsentfiles/dg-viewsentfiles.component';
 import { PapViewsentfilesComponent } from './pap-viewsentfiles/pap-viewsentfiles.component';
 import { DiViewsentfilesComponent } from './di-viewsentfiles/di-viewsentfiles.component';
+import { DbViewsentfilesComponent } from './db-viewsentfiles/db-viewsentfiles.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,24 +37,31 @@ const routes: Routes = [
   { path: 'uploadfiles', component: UploadfilesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'createaccount', component: CreateaccountComponent },
+
   { path: 'dg', component: DgComponent },
   { path: 'dg_upload', component: DgUploadComponent },
   { path: 'dg_send', component: DgSendFilesComponent },
   { path: 'dg_viewfiles', component: DgViewsentfilesComponent },
   { path: 'dg_users', component: DgUsersComponent },
+
   { path: 'pap', component: PapComponent },
   { path: 'pap_upload', component: PapUploadComponent },
   { path: 'pap_users', component: PapUsersComponent },
   { path: 'pap_send', component: PapSendFilesComponent },
   { path: 'pap_viewfiles', component: PapViewsentfilesComponent },
+
   { path: 'di', component: DiComponent },
   { path: 'di_upload', component: DiUploadComponent },
   { path: 'di_users', component: DiUsersComponent },
   { path: 'di_send', component: DiSendFilesComponent },
   { path: 'di_viewfiles', component: DiViewsentfilesComponent },
+
   { path: 'db', component: DbComponent },
   { path: 'db_upload', component: DbUploadComponent },
   { path: 'db_users', component: DbUsersComponent },
+  { path: 'db_send', component: DbSendFilesComponent },
+  { path: 'db_viewfiles', component: DbViewsentfilesComponent },
+
 ];
 
 @NgModule({
