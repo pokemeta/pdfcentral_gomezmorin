@@ -23,9 +23,11 @@ import { DbUsersComponent } from './db-users/db-users.component';
 
 import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
 import { PapSendFilesComponent } from './pap-send-files/pap-send-files.component';
+import { DiSendFilesComponent } from './di-send-files/di-send-files.component';
 
 import { DgViewsentfilesComponent } from './dg-viewsentfiles/dg-viewsentfiles.component';
 import { PapViewsentfilesComponent } from './pap-viewsentfiles/pap-viewsentfiles.component';
+import { DiViewsentfilesComponent } from './di-viewsentfiles/di-viewsentfiles.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,6 +48,8 @@ const routes: Routes = [
   { path: 'di', component: DiComponent },
   { path: 'di_upload', component: DiUploadComponent },
   { path: 'di_users', component: DiUsersComponent },
+  { path: 'di_send', component: DiSendFilesComponent },
+  { path: 'di_viewfiles', component: DiViewsentfilesComponent },
   { path: 'db', component: DbComponent },
   { path: 'db_upload', component: DbUploadComponent },
   { path: 'db_users', component: DbUsersComponent },

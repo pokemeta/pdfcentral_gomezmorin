@@ -24,6 +24,8 @@ import { DgSendFilesComponent } from './dg-send-files/dg-send-files.component';
 import { DgViewsentfilesComponent } from './dg-viewsentfiles/dg-viewsentfiles.component';
 import { PapSendFilesComponent } from './pap-send-files/pap-send-files.component';
 import { PapViewsentfilesComponent } from './pap-viewsentfiles/pap-viewsentfiles.component';
+import { DiSendFilesComponent } from './di-send-files/di-send-files.component';
+import { DiViewsentfilesComponent } from './di-viewsentfiles/di-viewsentfiles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,8 @@ import { PapViewsentfilesComponent } from './pap-viewsentfiles/pap-viewsentfiles
     DgViewsentfilesComponent,
     PapSendFilesComponent,
     PapViewsentfilesComponent,
+    DiSendFilesComponent,
+    DiViewsentfilesComponent,
   ],
   imports: [
     BrowserModule,
