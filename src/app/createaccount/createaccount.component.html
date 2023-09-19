@@ -2,7 +2,7 @@
 
     <div class="flex flex-col items-center w-full">
 
-        <div class="w-96 h-96 border-white border-solid border-4 p-5 mt-10">
+        <div class="w-96 h-auto border-white border-solid border-4 p-5 mt-10">
 
             <div class="w-full h-12 p-3 flex content-center items-center justify-between">
 
@@ -15,6 +15,20 @@
 
                 <label for="password" class="text-xl  font-bold">Password:</label>
                 <input type="text" id="password" class="w-48 h-12 text-black p-2">
+                
+            </div>
+            <br><br>
+            <div class="w-full h-12 p-3 flex content-center items-center justify-between">
+
+                <label for="area" class="text-xl  font-bold">Area:</label>
+                <!--<input type="text" id="area" class="w-48 h-12 text-black p-2">-->
+                <select name="area" id="area" class="w-48 h-12 text-black p-2">
+                    <option value = "NULL" selected disabled>Select area</option>
+                    <option value="DG">Direccion general</option>
+                    <option value="PAP">PAP</option>
+                    <option value="DI">Direccion informatica</option>
+                    <option value="DB">Direccion biblioteca</option>
+                </select>
                 
             </div>
 

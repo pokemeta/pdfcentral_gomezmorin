@@ -16,13 +16,15 @@ export class CreateaccountComponent {
 
     let user = document.getElementById("username") as HTMLInputElement;
     let pass = document.getElementById("password") as HTMLInputElement;
+    let userarea = document.getElementById("area") as HTMLInputElement;
 
-    if(user.value != "" && pass.value != ""){
+    if(user.value != "" && pass.value != "" && userarea.value != "NULL"){
 
       let userform = new FormData();
 
       userform.append("username", user.value);
       userform.append("password", pass.value);
+      userform.append("area", userarea.value);
 
       fetch(this.link.baseURL() + 'create_user.php', {
         method: "POST",
