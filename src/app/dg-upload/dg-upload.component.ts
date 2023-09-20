@@ -8,6 +8,20 @@ import Toastify from 'toastify-js';
   styleUrls: ['./dg-upload.component.css']
 })
 export class DgUploadComponent {
+
+  /*
+  
+    So this view has the file upload section and it is an important feature.
+    It is also the most complex component:
+
+    user_id, currentarea and files_uploaded are the variables that will be sent
+    to the backend.
+
+    userrole determines whether the user is a lider or director, if not, then
+    it's not gonna be able to upload files with the permissionbool.
+  
+  */
+
   cachedfiles: any;
   user_id: any;
   files_uploaded: any;
@@ -38,6 +52,15 @@ export class DgUploadComponent {
 
   }
 
+  /*
+
+    this function gets called when the drag and drop
+    area gets the files uploaded, but not ready on the
+    server yet.
+
+    it stores the files into the variable to process later.
+
+  */
   getFile(event: any){
 
     this.cachedfiles = event.target.files;
@@ -50,6 +73,9 @@ export class DgUploadComponent {
 
   }
 
+  //This function is the responsible to
+  //get the files that are already uploaded
+  //to the server
   retrieveFiles(){
     let idform = new FormData();
 
@@ -63,19 +89,20 @@ export class DgUploadComponent {
     .then(res => res.json())
     .then(data => {
 
+      //this is the variable that sets the data on the view
       this.files_uploaded = data;
 
     })
     .catch(error => {
 
-      /*Toastify({
+      Toastify({
         text: error,
         duration: 3000,
         className: "text-3xl",
         style: {
           background: "red",
         },
-      }).showToast();*/
+      }).showToast();
 
     });
 
@@ -88,11 +115,10 @@ export class DgUploadComponent {
 
       let formupload = new FormData();
 
+      //what follows is the appending of each file onto formdata
       for(let i = 0; i < this.cachedfiles.length; i++){
 
         let singlefile = this.cachedfiles[i];
-
-        //console.log(singlefile);
 
         formupload.append("pdffiles[]", singlefile);
   
@@ -109,6 +135,7 @@ export class DgUploadComponent {
       .then(res => res.json())
       .then(data => {
 
+        //if the response is a string
         if(typeof data == "string"){
 
           Toastify({
@@ -127,9 +154,9 @@ export class DgUploadComponent {
         }
         else{
 
+          //if either file has an error, it'll
+          //be displayed here
           for(let i = 0; i < data.length; i++){
-
-            //console.log(data[i].error);
 
             Toastify({
               text: data[i].error,
@@ -147,14 +174,14 @@ export class DgUploadComponent {
       })
       .catch(error => {
 
-        /*Toastify({
+        Toastify({
           text: error,
           duration: 3000,
           className: "text-3xl",
           style: {
             background: "red",
           },
-        }).showToast();*/
+        }).showToast();
 
       });
 
@@ -174,6 +201,7 @@ export class DgUploadComponent {
 
   }
 
+  //this is the function to delete the file
   deleteFile(id: any){
 
     let decision = confirm("Are you sure?");
@@ -206,14 +234,14 @@ export class DgUploadComponent {
       })
       .catch(error => {
 
-        /*Toastify({
+        Toastify({
           text: error,
           duration: 3000,
           className: "text-3xl",
           style: {
             background: "red",
           },
-        }).showToast();*/
+        }).showToast();
 
       });
 
