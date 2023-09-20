@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
+import Toastify from 'toastify-js';
 
 @Component({
   selector: 'app-dg-send-files',
@@ -7,14 +8,18 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./dg-send-files.component.css']
 })
 export class DgSendFilesComponent {
+  //these are for what's already uploaded
   files_uploaded: any;
   users_registered: any;
+  //the variables that will be sent along with id and area
   user_id: any;
   userrole: any;
+
   permissionbool:boolean = false;
 
   currentarea:string = "dg";
 
+  //these are only to set the view of each element
   setFile:boolean = false;
   setUser:boolean = false;
 
@@ -22,10 +27,23 @@ export class DgSendFilesComponent {
 
   sendFile(){
 
+    //the variables to get them ready to send
     let fileoption = document.getElementById("selectfile") as HTMLInputElement;
     let useroption = document.getElementById("selectuser") as HTMLInputElement;
     let areaorigin = this.currentarea;
     let usersender = this.user_id;
+
+
+    /*
+    
+      What this does is that, if a type of users was chosen, it will
+      call the multiple php file that handles to send the selected
+      pdf file to all the users of said type.
+
+      but if a specific user was chosen, the it'll call for the general
+      user send file php.
+
+    */
 
     if(useroption.value == "directores" || useroption.value == "lideres" || useroption.value == "usuarios"){
 
@@ -48,14 +66,14 @@ export class DgSendFilesComponent {
       })
       .catch(error => {
 
-        /*Toastify({
+        Toastify({
           text: error,
           duration: 3000,
           className: "text-3xl",
           style: {
             background: "red",
           },
-        }).showToast();*/
+        }).showToast();
 
       });
 
@@ -81,14 +99,14 @@ export class DgSendFilesComponent {
       })
       .catch(error => {
 
-        /*Toastify({
+        Toastify({
           text: error,
           duration: 3000,
           className: "text-3xl",
           style: {
             background: "red",
           },
-        }).showToast();*/
+        }).showToast();
 
       });
 
@@ -96,6 +114,7 @@ export class DgSendFilesComponent {
 
   }
 
+  //gets the files of the area that are uploaded
   retrieveFiles(){
     let idform = new FormData();
 
@@ -114,20 +133,21 @@ export class DgSendFilesComponent {
     })
     .catch(error => {
 
-      /*Toastify({
+      Toastify({
         text: error,
         duration: 3000,
         className: "text-3xl",
         style: {
           background: "red",
         },
-      }).showToast();*/
+      }).showToast();
 
     });
 
 
   }
 
+  //gets the users of the area avalaible
   retrieveUsers(){
 
     fetch(this.link.baseURL() + 'getusers_global.php', {
@@ -141,14 +161,14 @@ export class DgSendFilesComponent {
     })
     .catch(error => {
 
-      /*Toastify({
+      Toastify({
         text: error,
         duration: 3000,
         className: "text-3xl",
         style: {
           background: "red",
         },
-      }).showToast();*/
+      }).showToast();
 
     });
 
