@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { UploadfilesComponent } from './uploadfiles/uploadfiles.component';
 import { LoginComponent } from './login/login.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
 
@@ -32,9 +30,7 @@ import { DiViewsentfilesComponent } from './di-viewsentfiles/di-viewsentfiles.co
 import { DbViewsentfilesComponent } from './db-viewsentfiles/db-viewsentfiles.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'uploadfiles', component: UploadfilesComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'createaccount', component: CreateaccountComponent },
 

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+//router is used to redirect the user to the respective page of their area
 import { Router } from '@angular/router';
+//we'll retrieve the baselink variable from here
 import { AppComponent } from '../app.component';
+//Toastify is imported here to make the necessary error calls
 import Toastify from 'toastify-js';
 
 @Component({
@@ -10,20 +13,25 @@ import Toastify from 'toastify-js';
 })
 export class LoginComponent {
 
+  //this is done in order to be able to use router and the baselink stuff
   constructor(private router: Router, private link: AppComponent){}
 
   sendLogin(){
 
+    //we get the values of the inputs
     let user = document.getElementById("username") as HTMLInputElement;
     let pass = document.getElementById("password") as HTMLInputElement;
 
+    //if the fields are not empty
     if(user.value != "" && pass.value != ""){
 
+      //we create and append the values to the form data
       let userform = new FormData();
 
       userform.append("username", user.value);
       userform.append("password", pass.value);
 
+      //and we make the call to the php file set for it
       fetch(this.link.baseURL() + 'login_user.php', {
         method: "POST",
         body: userform,
@@ -31,12 +39,30 @@ export class LoginComponent {
       .then(res => res.json())
       .then(data => {
 
+        /*
+        
+          I'm gonna detail this a bit further:
+          login_user.php works in the way that if there are no
+          errors, it will return an object, in this case, all the
+          data of the user that was just sent in the login.
+          But if the login fails, it will throw an "INVALID USER"
+          error, making this a string instead of an object, hence
+          why there's a toast with the data as text, because it
+          displays the error the server sent as a result.
+        
+        */
+
         if(typeof data == "object"){
 
+          //these will work across the website, so it's important to
+          //set these as the session, they're crucial for most
+          //fetch API calls
           sessionStorage.setItem("userlogged", data.username);
           sessionStorage.setItem("userid", data.id);
           sessionStorage.setItem("userrole", data.rol);
 
+          //Depending on what area was the user assigned to
+          //it's where they will get sent to
           switch(data.area){
 
             case "DG":
@@ -57,6 +83,7 @@ export class LoginComponent {
         }
         else{
 
+          //the INVALID USER error
           Toastify({
             text: data,
             duration: 3000,
@@ -68,26 +95,22 @@ export class LoginComponent {
 
         }
 
-        /*sessionStorage.setItem("userlogged", data.username);
-        sessionStorage.setItem("userid", data.id);
-
-        this.router.navigate(['/home']);*/
-
       })
       .catch(error => {
 
-        /*Toastify({
+        Toastify({
           text: error,
           duration: 3000,
           className: "text-3xl",
           style: {
             background: "red",
           },
-        }).showToast();*/
+        }).showToast();
 
       });
     
     }
+    //in case one of the fields is empty
     else{
 
       Toastify({
