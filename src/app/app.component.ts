@@ -28,8 +28,8 @@ import Toastify from 'toastify-js';
 export class AppComponent {
   title = 'pdfcentral_gomezmorin';
 
-  //baseLink:string = "http://localhost/pdfcentral_backend/";
-  baseLink:string = "http://10.63.70.117/pdfcentral_backend/"; //the link where the fetch API calls will point at
+  baseLink:string = "http://localhost/pdfcentral_backend/";
+  //baseLink:string = "http://10.63.70.117/pdfcentral_backend/"; //the link where the fetch API calls will point at
 
   //this function does the same as the interval,
   //it was done for mere testing purposes, it has no use in the website
