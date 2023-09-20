@@ -14,18 +14,23 @@ export class CreateaccountComponent {
 
   sendAccount(){
 
+    //we get the input values
     let user = document.getElementById("username") as HTMLInputElement;
     let pass = document.getElementById("password") as HTMLInputElement;
     let userarea = document.getElementById("area") as HTMLInputElement;
 
+    //if either value is empty, note that select's option is NULL by the default to avoid
+    //getting the contents instead
     if(user.value != "" && pass.value != "" && userarea.value != "NULL"){
 
+      //we make the formdata and append the values to send
       let userform = new FormData();
 
       userform.append("username", user.value);
       userform.append("password", pass.value);
       userform.append("area", userarea.value);
 
+      //and we make the call
       fetch(this.link.baseURL() + 'create_user.php', {
         method: "POST",
         body: userform,
@@ -33,18 +38,8 @@ export class CreateaccountComponent {
       .then(res => res.json())
       .then(data => {
 
+        //once the user was created, we send them back to the login
         this.router.navigate(['/login']);
-
-        //console.log(data);
-
-        /*Toastify({
-          text: data,
-          duration: 3000,
-          className: "text-3xl",
-          style: {
-            background: "green",
-          },
-        }).showToast();*/
 
       })
       .catch(error => {
