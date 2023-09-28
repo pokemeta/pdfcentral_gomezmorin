@@ -63,21 +63,31 @@ export class LoginComponent {
 
           //Depending on what area was the user assigned to
           //it's where they will get sent to
-          switch(data.area){
 
-            case "DG":
-              this.router.navigate(['/dg']);
-              break;
-            case "PAP":
-              this.router.navigate(['/pap']);
-              break;
-            case "DI":
-              this.router.navigate(['/di']);
-              break;
-            case "DB":
-              this.router.navigate(['/db']);
-              break;
-  
+          if(data.rol == "root"){
+
+            this.router.navigate(['/root_panel']);
+
+          }
+          else{
+
+            switch(data.area){
+
+              case "DG":
+                this.router.navigate(['/dg']);
+                break;
+              case "PAP":
+                this.router.navigate(['/pap']);
+                break;
+              case "DI":
+                this.router.navigate(['/di']);
+                break;
+              case "DB":
+                this.router.navigate(['/db']);
+                break;
+    
+            }
+
           }
 
         }

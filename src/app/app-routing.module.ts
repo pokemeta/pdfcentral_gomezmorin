@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
+import { RootUsersComponent } from './root-users/root-users.component';
 
 import { DgComponent } from './dg/dg.component';
 import { PapComponent } from './pap/pap.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'createaccount', component: CreateaccountComponent },
+  { path: 'root_panel', component: RootUsersComponent },
 
   { path: 'dg', component: DgComponent },
   { path: 'dg_upload', component: DgUploadComponent },

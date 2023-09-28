@@ -1,0 +1,42 @@
+<div class="h-screen w-screen bg-slate-800 text-white">
+
+    <div class="flex flex-col items-center w-full">
+
+        
+        <table class="w-full mt-10 table-fixed text-center border-2 border-white border-solid">
+    
+            <thead class="border-white border-b-2 h-12">
+
+                <tr>
+                    <th class="border-white border-r-2">ID</th>
+                    <th class="border-white border-r-2">user</th>
+                    <th class="border-white border-r-2">role</th>
+                    <th>action</th>
+                </tr>
+
+            </thead>
+            <tbody  *ngFor="let u of users">
+
+                <tr class="border-white border-b-2 h-12">
+                    <td class="border-white border-r-2">{{ u.id }}</td>
+                    <td class="border-white border-r-2">{{ u.username }}</td>
+                    <td class="border-white border-r-2">
+
+                        <select class="bg-slate-700 p-3 w-96" name="selectrole" id="selectrole" [value]="u.rol" (change)="updateUserRole(u.id, $event)">
+                            <option value="director">director</option>
+                            <option value="lider">lider</option>
+                            <option value="usuario">usuario</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="p-3 bg-red-800 active:bg-red-950 text-white">Delete</button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

@@ -26,6 +26,7 @@ import { DiSendFilesComponent } from './di-send-files/di-send-files.component';
 import { DiViewsentfilesComponent } from './di-viewsentfiles/di-viewsentfiles.component';
 import { DbSendFilesComponent } from './db-send-files/db-send-files.component';
 import { DbViewsentfilesComponent } from './db-viewsentfiles/db-viewsentfiles.component';
+import { RootUsersComponent } from './root-users/root-users.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { DbViewsentfilesComponent } from './db-viewsentfiles/db-viewsentfiles.co
     DiViewsentfilesComponent,
     DbSendFilesComponent,
     DbViewsentfilesComponent,
+    RootUsersComponent,
   ],
   imports: [
     BrowserModule,
