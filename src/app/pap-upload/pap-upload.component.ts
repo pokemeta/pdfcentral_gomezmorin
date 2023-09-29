@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
 import Toastify from 'toastify-js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pap-upload',
@@ -68,14 +69,11 @@ export class PapUploadComponent {
     })
     .catch(error => {
 
-      /*Toastify({
-        text: error,
-        duration: 3000,
-        className: "text-3xl",
-        style: {
-          background: "red",
-        },
-      }).showToast();*/
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: error
+      });
 
     });
 
@@ -91,8 +89,6 @@ export class PapUploadComponent {
       for(let i = 0; i < this.cachedfiles.length; i++){
 
         let singlefile = this.cachedfiles[i];
-
-        //console.log(singlefile);
 
         formupload.append("pdffiles[]", singlefile);
   
@@ -111,14 +107,11 @@ export class PapUploadComponent {
 
         if(typeof data == "string"){
 
-          Toastify({
-            text: data,
-            duration: 3000,
-            className: "text-3xl",
-            style: {
-              background: "green",
-            },
-          }).showToast();
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: data
+          });
 
           this.cachedfiles = undefined;
 
@@ -128,8 +121,6 @@ export class PapUploadComponent {
         else{
 
           for(let i = 0; i < data.length; i++){
-
-            //console.log(data[i].error);
 
             Toastify({
               text: data[i].error,
@@ -147,28 +138,22 @@ export class PapUploadComponent {
       })
       .catch(error => {
 
-        /*Toastify({
-          text: error,
-          duration: 3000,
-          className: "text-3xl",
-          style: {
-            background: "red",
-          },
-        }).showToast();*/
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error
+        });
 
       });
 
     }
     else{
 
-      Toastify({
-        text: "Upload a file!",
-        duration: 3000,
-        className: "text-3xl",
-        style: {
-          background: "red",
-        },
-      }).showToast();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Upload a file!'
+      });
 
     }
 
@@ -206,14 +191,11 @@ export class PapUploadComponent {
       })
       .catch(error => {
 
-        /*Toastify({
-          text: error,
-          duration: 3000,
-          className: "text-3xl",
-          style: {
-            background: "red",
-          },
-        }).showToast();*/
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error
+        });
 
       });
 

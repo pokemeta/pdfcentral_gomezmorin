@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
 import Toastify from 'toastify-js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pap-users',
@@ -32,14 +33,11 @@ export class PapUsersComponent {
     })
     .catch(error => {
 
-      /*Toastify({
-        text: error,
-        duration: 3000,
-        className: "text-3xl",
-        style: {
-          background: "red",
-        },
-      }).showToast();*/
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: error
+      });
 
     });
 
@@ -47,47 +45,48 @@ export class PapUsersComponent {
 
   deactivateUser(id: any){
 
-    let decision = confirm("Are you sure?");
+    Swal.fire({
+      title: 'Do you want to delete the user?',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
+    }).then((result) => {
 
-    if(decision){
+      if (result.isConfirmed) {
 
-      let idform = new FormData();
+        let idform = new FormData();
 
-      idform.append("id", id);
+        idform.append("id", id);
+    
+        fetch(this.link.baseURL() + 'deactivateuser.php', {
+          method: "POST",
+          body: idform,
+        })
+        .then(res => res.json())
+        .then(data => {
   
-      fetch(this.link.baseURL() + 'deactivateuser.php', {
-        method: "POST",
-        body: idform,
-      })
-      .then(res => res.json())
-      .then(data => {
+          this.getUsers();
+  
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: data
+          });
+    
+        })
+        .catch(error => {
+    
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error
+          });
+    
+        });
 
-        this.getUsers();
-  
-        Toastify({
-          text: data,
-          duration: 3000,
-          className: "text-3xl text-black",
-          style: {
-            background: "yellow",
-          },
-        }).showToast();
-  
-      })
-      .catch(error => {
-  
-        /*Toastify({
-          text: error,
-          duration: 3000,
-          className: "text-3xl",
-          style: {
-            background: "red",
-          },
-        }).showToast();*/
-  
-      });
+      }
 
-    }
+    });
 
   }
 

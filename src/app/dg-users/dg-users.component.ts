@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
-import Toastify from 'toastify-js';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -90,12 +89,6 @@ export class DgUsersComponent {
       }
 
     });
-
-    /*let decision = confirm("Are you sure?");
-
-    if(decision){
-
-    }*/
 
   }
 

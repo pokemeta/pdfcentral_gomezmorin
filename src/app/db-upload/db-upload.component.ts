@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
 import Toastify from 'toastify-js';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-db-upload',
@@ -68,14 +69,11 @@ export class DbUploadComponent {
     })
     .catch(error => {
 
-      /*Toastify({
-        text: error,
-        duration: 3000,
-        className: "text-3xl",
-        style: {
-          background: "red",
-        },
-      }).showToast();*/
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: error
+      });
 
     });
 
@@ -111,14 +109,11 @@ export class DbUploadComponent {
 
         if(typeof data == "string"){
 
-          Toastify({
-            text: data,
-            duration: 3000,
-            className: "text-3xl",
-            style: {
-              background: "green",
-            },
-          }).showToast();
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: data
+          });
 
           this.cachedfiles = undefined;
 
@@ -128,8 +123,6 @@ export class DbUploadComponent {
         else{
 
           for(let i = 0; i < data.length; i++){
-
-            //console.log(data[i].error);
 
             Toastify({
               text: data[i].error,
@@ -147,28 +140,22 @@ export class DbUploadComponent {
       })
       .catch(error => {
 
-        /*Toastify({
-          text: error,
-          duration: 3000,
-          className: "text-3xl",
-          style: {
-            background: "red",
-          },
-        }).showToast();*/
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error
+        });
 
       });
 
     }
     else{
 
-      Toastify({
-        text: "Upload a file!",
-        duration: 3000,
-        className: "text-3xl",
-        style: {
-          background: "red",
-        },
-      }).showToast();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Upload a file!'
+      });
 
     }
 
@@ -176,48 +163,52 @@ export class DbUploadComponent {
 
   deleteFile(id: any){
 
-    let decision = confirm("Are you sure?");
+    Swal.fire({
+      title: 'Do you want to delete the file?',
+      showDenyButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
+    }).then((result) => {
 
-    if(decision){
+      if (result.isConfirmed) {
 
-      let fileidform = new FormData();
+        let fileidform = new FormData();
 
-      fileidform.append("pdfid", id);
-      fileidform.append("area", this.currentarea);
+        fileidform.append("pdfid", id);
+        fileidform.append("area", this.currentarea);
+  
+        fetch(this.link.baseURL() + 'deactivatefile.php', {
+          method: "POST",
+          body: fileidform,
+        })
+        .then(res => res.json())
+        .then(data => {
+  
+          this.retrieveFiles();
+  
+          Toastify({
+            text: data,
+            duration: 3000,
+            className: "text-black text-3xl",
+            style: {
+              background: "yellow",
+            },
+          }).showToast();
+  
+        })
+        .catch(error => {
+  
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error
+          });
+  
+        });
 
-      fetch(this.link.baseURL() + 'deactivatefile.php', {
-        method: "POST",
-        body: fileidform,
-      })
-      .then(res => res.json())
-      .then(data => {
+      }
 
-        this.retrieveFiles();
-
-        Toastify({
-          text: data,
-          duration: 3000,
-          className: "text-black text-3xl",
-          style: {
-            background: "yellow",
-          },
-        }).showToast();
-
-      })
-      .catch(error => {
-
-        /*Toastify({
-          text: error,
-          duration: 3000,
-          className: "text-3xl",
-          style: {
-            background: "red",
-          },
-        }).showToast();*/
-
-      });
-
-    }
+    });
 
   }
 
