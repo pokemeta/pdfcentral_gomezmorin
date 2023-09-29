@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 //Toastify is imported here to make the necessary error calls
 import Toastify from 'toastify-js';
+//Sweetalert is only used for single error calls
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -94,28 +96,22 @@ export class LoginComponent {
         else{
 
           //the INVALID USER error
-          Toastify({
-            text: data,
-            duration: 3000,
-            className: "text-3xl",
-            style: {
-              background: "red",
-            },
-          }).showToast();
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: data
+          });
 
         }
 
       })
       .catch(error => {
 
-        Toastify({
-          text: error,
-          duration: 3000,
-          className: "text-3xl",
-          style: {
-            background: "red",
-          },
-        }).showToast();
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error
+        });
 
       });
     
@@ -123,14 +119,11 @@ export class LoginComponent {
     //in case one of the fields is empty
     else{
 
-      Toastify({
-        text: "One of the fields is empty",
-        duration: 3000,
-        className: "text-3xl",
-        style: {
-          background: "red",
-        },
-      }).showToast();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'One of the fields is empty'
+      });
 
     }
 
