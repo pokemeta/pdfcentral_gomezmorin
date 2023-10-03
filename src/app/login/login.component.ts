@@ -63,6 +63,9 @@ export class LoginComponent {
           sessionStorage.setItem("userid", data.id);
           sessionStorage.setItem("userrole", data.rol);
 
+          let area_lower = data.area.toLowerCase();
+          sessionStorage.setItem("userarea", area_lower);
+
           //Depending on what area was the user assigned to
           //it's where they will get sent to
 

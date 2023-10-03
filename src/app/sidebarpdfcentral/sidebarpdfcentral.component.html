@@ -2,12 +2,46 @@
 
     <aside class="fixed left-0 top-0 w-[318px] h-screen bg-slate-700 p-10 flex flex-col justify-between">
 
-        <div class="flex items-center justify-center mt-2">
-            <button type="button" class="text-white bg-red-600 active:bg-red-800 p-2" (click)="destroySession()">Log out</button>
-        </div>
+        <div>
 
-        <div class="bg-yellow-200 rounded-md p-3">
-            <h3 class="text-5xl text-center">ALPHA</h3>
+            <button class="w-full h-14 flex items-center justify-center mt-2 hover:bg-slate-900 text-white" (click)="main_location()">
+                Main
+            </button>
+            <button class="w-full h-14 flex items-center justify-center mt-2 hover:bg-slate-900 text-white" (click)="upload_location()">
+                Upload files
+            </button>
+            <button class="w-full h-14 flex items-center justify-center mt-2 hover:bg-slate-900 text-white" (click)="send_location()">
+                Send files
+            </button>
+            <button class="w-full h-14 flex items-center justify-center mt-2 hover:bg-slate-900 text-white" (click)="viewfiles_location()">
+                View sent files
+            </button>
+            <button *ngIf="permissionbool" class="w-full h-14 flex items-center justify-center mt-2 hover:bg-slate-900 text-white" (click)="users_location()">
+                Manage users
+            </button>
+
+            <div *ngIf="userrole == 'director'" class="grid grid-cols-2 gap-4 w-full mt-2">
+                <button (click)="change_area('dg')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800">DG</button>
+                <button (click)="change_area('pap')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-green active:bg-green-800">PAP</button>
+                <button (click)="change_area('di')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-red active:bg-red-800">DI</button>
+                <button (click)="change_area('db')" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-yellow active:bg-yellow-800">DB</button>
+            </div>
+              
+
+        </div>
+        <div>
+
+            <div class="flex items-center justify-center mt-2">
+                <button type="button" class="text-white bg-red-600 active:bg-red-800 p-2" (click)="destroySession()">Log out</button>
+            </div>
+
+        </div>
+        <div>
+
+            <div class="bg-yellow-200 rounded-md p-3">
+                <h3 class="text-5xl text-center">BETA</h3>
+            </div>
+
         </div>
 
     </aside>
